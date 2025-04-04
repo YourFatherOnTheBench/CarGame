@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8tlqhumt0vc1"]
+
+[ext_resource type="Script" uid="uid://bhjrf4p2iolow" path="res://Games/Race/scripts/booster.gd" id="1_uqkl3"]
+[ext_resource type="Texture2D" uid="uid://bf0xn4nvneppy" path="res://Assets/Racing_AssetPack_Personal/Racing_AssetPack_Personal/Racing_AssetPack - Copy.png" id="1_vyqhw"]
+
+[sub_resource type="Animation" id="Animation_r6qmq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_msrml"]
+resource_name = "idle"
+length = 0.3
+loop_mode = 2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s153g"]
+_data = {
+&"RESET": SubResource("Animation_r6qmq"),
+&"idle": SubResource("Animation_msrml")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsyie"]
+size = Vector2(36, 24)
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_uqkl3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_s153g")
+}
+autoplay = "idle"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 4
+texture = ExtResource("1_vyqhw")
+vframes = 7
+region_enabled = true
+region_rect = Rect2(1006, 66, 50, 224)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 0)
+shape = SubResource("RectangleShape2D_gsyie")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

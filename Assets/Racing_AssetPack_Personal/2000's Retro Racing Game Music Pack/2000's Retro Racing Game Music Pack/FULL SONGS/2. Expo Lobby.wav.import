@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bffgk43io5ho4"
+path="res://.godot/imported/2. Expo Lobby.wav-e31dfc9ca07022001b3b30dd0894b14c.sample"
+
+[deps]
+
+source_file="res://Assets/Racing_AssetPack_Personal/2000's Retro Racing Game Music Pack/2000's Retro Racing Game Music Pack/FULL SONGS/2. Expo Lobby.wav"
+dest_files=["res://.godot/imported/2. Expo Lobby.wav-e31dfc9ca07022001b3b30dd0894b14c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

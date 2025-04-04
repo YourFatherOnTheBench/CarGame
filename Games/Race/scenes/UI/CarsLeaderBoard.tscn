@@ -1,0 +1,122 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2uppv43i1scu"]
+
+[ext_resource type="Script" uid="uid://b0k00ln1tclrt" path="res://Games/Race/scripts/UI_scripts/cars_leader_board.gd" id="1_eb5ml"]
+[ext_resource type="FontFile" uid="uid://7pd1bf7pp0t6" path="res://Assets/m6x11.ttf" id="1_vjsjo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ohm1"]
+bg_color = Color(0.102, 0.102, 0.3, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_njr8e"]
+bg_color = Color(0.102, 0.102, 0.3, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="CarLeaderBoard" type="CanvasLayer"]
+script = ExtResource("1_eb5ml")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 274.0
+offset_bottom = 126.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Vbox" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer/Vbox"]
+custom_minimum_size = Vector2(10, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_1ohm1")
+
+[node name="Hbox" type="HBoxContainer" parent="Control/MarginContainer/Vbox/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.057
+anchor_right = 1.0
+offset_left = 0.0819998
+offset_bottom = 26.0
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="Control/MarginContainer/Vbox/Panel/Hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_vjsjo")
+text = "Country"
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/Vbox/Panel/Hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_vjsjo")
+text = "Time"
+
+[node name="Label3" type="Label" parent="Control/MarginContainer/Vbox/Panel/Hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_vjsjo")
+text = "Lap"
+
+[node name="Panel2" type="Panel" parent="Control/MarginContainer/Vbox"]
+custom_minimum_size = Vector2(10, 20)
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_njr8e")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/MarginContainer/Vbox/Panel2"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 15.0
+offset_top = 3.0
+offset_right = 119.0
+offset_bottom = 14.0
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="Control/MarginContainer/Vbox/Panel2/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_vjsjo")
+text = "Poland"
+
+[node name="time" type="Label" parent="Control/MarginContainer/Vbox/Panel2/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_vjsjo")
+text = "0:00"
+
+[node name="laps" type="Label" parent="Control/MarginContainer/Vbox/Panel2/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_vjsjo")
+text = "0/5"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

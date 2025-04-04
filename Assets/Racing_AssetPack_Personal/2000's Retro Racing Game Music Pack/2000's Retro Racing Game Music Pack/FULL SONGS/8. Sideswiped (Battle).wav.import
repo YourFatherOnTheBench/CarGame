@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://botvipaexche4"
+path="res://.godot/imported/8. Sideswiped (Battle).wav-c4df6514493164a26a5afaa30fa0af65.sample"
+
+[deps]
+
+source_file="res://Assets/Racing_AssetPack_Personal/2000's Retro Racing Game Music Pack/2000's Retro Racing Game Music Pack/FULL SONGS/8. Sideswiped (Battle).wav"
+dest_files=["res://.godot/imported/8. Sideswiped (Battle).wav-c4df6514493164a26a5afaa30fa0af65.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

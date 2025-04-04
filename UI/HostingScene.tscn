@@ -1,0 +1,209 @@
+[gd_scene load_steps=15 format=3 uid="uid://rlwbs56s7ftt"]
+
+[ext_resource type="Script" uid="uid://bfyhbr10v8sd3" path="res://UI/hosting_scene.gd" id="1_fttbb"]
+[ext_resource type="Script" uid="uid://dxrotpw0o1it7" path="res://UI/AdjustScale.gd" id="1_rxdfp"]
+[ext_resource type="Texture2D" uid="uid://de188pevfg4ss" path="res://Assets/rural area/ruralparallaxsky.png" id="2_8chk0"]
+[ext_resource type="Texture2D" uid="uid://bmdh7l2tpdljk" path="res://Assets/rural area/ruralparallaxclouds.png" id="3_irjnh"]
+[ext_resource type="Texture2D" uid="uid://cm2vp23tt30ck" path="res://Assets/rural area/ruralparallaxmountainback2.png" id="4_fttbb"]
+[ext_resource type="Texture2D" uid="uid://cg5q3h6s3arvm" path="res://Assets/rural area/ruralparallaxmountainback.png" id="5_pdlwr"]
+[ext_resource type="Texture2D" uid="uid://ba73jlif1ffj1" path="res://Assets/rural area/ruralparallaxmountain.png" id="6_88fo1"]
+[ext_resource type="Texture2D" uid="uid://cpy0dqimybkve" path="res://Assets/rural area/ruralparallaxriver.png" id="7_qfjni"]
+[ext_resource type="Texture2D" uid="uid://d3agarl0dh7pp" path="res://Assets/rural area/ruralparallaxriverfront.png" id="8_bjwrf"]
+[ext_resource type="Texture2D" uid="uid://cd4wbis5qrt6m" path="res://Assets/rural area/ruralparallaxriverskyredlex.png" id="9_efhm6"]
+[ext_resource type="Texture2D" uid="uid://0lx4q108njse" path="res://Assets/rural area/ruralparallaxvillage.png" id="10_ilrrj"]
+[ext_resource type="FontFile" uid="uid://7pd1bf7pp0t6" path="res://Assets/m6x11.ttf" id="11_8chk0"]
+[ext_resource type="Texture2D" uid="uid://3wqkrnva7p8b" path="res://Assets/Racing_AssetPack_Personal/map1p.png" id="12_irjnh"]
+[ext_resource type="PackedScene" uid="uid://s54avf1mc70b" path="res://UI/goBackScene.tscn" id="14_pdlwr"]
+
+[node name="Hosting" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fttbb")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Sky" type="Parallax2D" parent="CanvasLayer"]
+z_index = -1
+script = ExtResource("1_rxdfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Sky"]
+position = Vector2(576.5, 325)
+scale = Vector2(0.5, 0.6)
+texture = ExtResource("2_8chk0")
+
+[node name="clouds" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1750, 0)
+autoscroll = Vector2(-10, 0)
+script = ExtResource("1_rxdfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/clouds"]
+position = Vector2(871.65, 321.5)
+scale = Vector2(0.458605, 0.539167)
+texture = ExtResource("3_irjnh")
+
+[node name="grayMesh" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-10, 0)
+script = ExtResource("1_rxdfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/grayMesh"]
+position = Vector2(574.5, 318)
+scale = Vector2(0.302895, 0.531667)
+texture = ExtResource("4_fttbb")
+
+[node name="greenMesh" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-10, 0)
+script = ExtResource("1_rxdfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/greenMesh"]
+position = Vector2(578, 320.5)
+scale = Vector2(0.302105, 0.540833)
+texture = ExtResource("5_pdlwr")
+
+[node name="mountain" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1750, 0)
+autoscroll = Vector2(-50, 0)
+script = ExtResource("1_rxdfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/mountain"]
+position = Vector2(875, 327)
+scale = Vector2(0.461053, 0.545)
+texture = ExtResource("6_88fo1")
+
+[node name="river" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-600, 0)
+repeat_times = 2
+script = ExtResource("1_rxdfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/river"]
+position = Vector2(576, 323.5)
+scale = Vector2(0.303684, 0.540833)
+texture = ExtResource("7_qfjni")
+
+[node name="GreenLine" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-600, 0)
+script = ExtResource("1_rxdfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/GreenLine"]
+position = Vector2(576.5, 323.5)
+scale = Vector2(0.303947, 0.5425)
+texture = ExtResource("8_bjwrf")
+
+[node name="SkyInRiver" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1750, 0)
+autoscroll = Vector2(-10, 0)
+script = ExtResource("1_rxdfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SkyInRiver"]
+position = Vector2(875, 322.5)
+scale = Vector2(0.461053, 0.539167)
+texture = ExtResource("9_efhm6")
+
+[node name="Village" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1800, 0)
+autoscroll = Vector2(-300, 0)
+script = ExtResource("1_rxdfp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Village"]
+position = Vector2(916, 324)
+scale = Vector2(0.483421, 0.544167)
+texture = ExtResource("10_ilrrj")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.386
+anchor_top = 0.235
+anchor_right = 0.615
+anchor_bottom = 0.603
+offset_left = 0.328003
+offset_top = -0.280014
+offset_right = -0.47998
+offset_bottom = 108.256
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 40
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("11_8chk0")
+theme_override_font_sizes/font_size = 60
+text = "CHOOSE MAP"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="TabBar" type="TabBar" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_8chk0")
+theme_override_font_sizes/font_size = 30
+current_tab = 0
+tab_alignment = 1
+clip_tabs = false
+tab_count = 3
+tab_0/title = "MAP1"
+tab_1/title = "MAP2"
+tab_2/title = "MAP3"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("12_irjnh")
+
+[node name="START" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_8chk0")
+theme_override_font_sizes/font_size = 45
+text = "START GAME"
+
+[node name="HOST" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.127
+anchor_top = 0.523
+anchor_right = 0.269
+anchor_bottom = 0.623
+offset_left = -0.304001
+offset_top = 0.0960083
+offset_right = 0.111969
+offset_bottom = 0.29599
+theme_override_fonts/font = ExtResource("11_8chk0")
+theme_override_font_sizes/font_size = 55
+text = "HOST"
+
+[node name="JOIN" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.734
+anchor_top = 0.523
+anchor_right = 0.889
+anchor_bottom = 0.573
+offset_left = -0.568054
+offset_top = 0.0960083
+offset_right = -0.128052
+offset_bottom = 32.696
+theme_override_fonts/font = ExtResource("11_8chk0")
+theme_override_font_sizes/font_size = 55
+text = "JOIN"
+
+[node name="GoBackScene" parent="." instance=ExtResource("14_pdlwr")]
+
+[connection signal="tab_changed" from="MarginContainer/VBoxContainer/HBoxContainer/TabBar" to="." method="_on_tab_bar_tab_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/START" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="HOST" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="JOIN" to="." method="_on_join_pressed"]

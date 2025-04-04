@@ -1,0 +1,172 @@
+[gd_scene load_steps=15 format=3 uid="uid://psyfs7ti8ssd"]
+
+[ext_resource type="Texture2D" uid="uid://de188pevfg4ss" path="res://Assets/rural area/ruralparallaxsky.png" id="1_amia7"]
+[ext_resource type="Script" uid="uid://c344e8ok5xhtx" path="res://UI/main_menu.gd" id="1_posw2"]
+[ext_resource type="Script" uid="uid://dxrotpw0o1it7" path="res://UI/AdjustScale.gd" id="2_f433h"]
+[ext_resource type="Texture2D" uid="uid://bmdh7l2tpdljk" path="res://Assets/rural area/ruralparallaxclouds.png" id="3_8jwwe"]
+[ext_resource type="Texture2D" uid="uid://ba73jlif1ffj1" path="res://Assets/rural area/ruralparallaxmountain.png" id="4_u2amm"]
+[ext_resource type="Texture2D" uid="uid://cm2vp23tt30ck" path="res://Assets/rural area/ruralparallaxmountainback2.png" id="5_6ko2g"]
+[ext_resource type="Texture2D" uid="uid://cg5q3h6s3arvm" path="res://Assets/rural area/ruralparallaxmountainback.png" id="6_kcw2s"]
+[ext_resource type="Texture2D" uid="uid://cpy0dqimybkve" path="res://Assets/rural area/ruralparallaxriver.png" id="7_dm13p"]
+[ext_resource type="Texture2D" uid="uid://d3agarl0dh7pp" path="res://Assets/rural area/ruralparallaxriverfront.png" id="8_xo2v2"]
+[ext_resource type="Texture2D" uid="uid://cd4wbis5qrt6m" path="res://Assets/rural area/ruralparallaxriverskyredlex.png" id="9_y1bai"]
+[ext_resource type="Texture2D" uid="uid://0lx4q108njse" path="res://Assets/rural area/ruralparallaxvillage.png" id="10_iqwx1"]
+[ext_resource type="FontFile" uid="uid://7pd1bf7pp0t6" path="res://Assets/m6x11.ttf" id="10_ysjxp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysjxp"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_posw2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_posw2")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Sky" type="Parallax2D" parent="CanvasLayer"]
+z_index = -1
+script = ExtResource("2_f433h")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Sky"]
+position = Vector2(576.5, 325)
+scale = Vector2(0.5, 0.6)
+texture = ExtResource("1_amia7")
+
+[node name="clouds" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1750, 0)
+autoscroll = Vector2(-10, 0)
+script = ExtResource("2_f433h")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/clouds"]
+position = Vector2(871.65, 321.5)
+scale = Vector2(0.458605, 0.539167)
+texture = ExtResource("3_8jwwe")
+
+[node name="grayMesh" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-10, 0)
+script = ExtResource("2_f433h")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/grayMesh"]
+position = Vector2(574.5, 318)
+scale = Vector2(0.302895, 0.531667)
+texture = ExtResource("5_6ko2g")
+
+[node name="greenMesh" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-10, 0)
+script = ExtResource("2_f433h")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/greenMesh"]
+position = Vector2(578, 320.5)
+scale = Vector2(0.302105, 0.540833)
+texture = ExtResource("6_kcw2s")
+
+[node name="mountain" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1750, 0)
+autoscroll = Vector2(-50, 0)
+script = ExtResource("2_f433h")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/mountain"]
+position = Vector2(875, 327)
+scale = Vector2(0.461053, 0.545)
+texture = ExtResource("4_u2amm")
+
+[node name="river" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-600, 0)
+repeat_times = 2
+script = ExtResource("2_f433h")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/river"]
+position = Vector2(576, 323.5)
+scale = Vector2(0.303684, 0.540833)
+texture = ExtResource("7_dm13p")
+
+[node name="GreenLine" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1152, 0)
+autoscroll = Vector2(-600, 0)
+script = ExtResource("2_f433h")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/GreenLine"]
+position = Vector2(576.5, 323.5)
+scale = Vector2(0.303947, 0.5425)
+texture = ExtResource("8_xo2v2")
+
+[node name="SkyInRiver" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1750, 0)
+autoscroll = Vector2(-10, 0)
+script = ExtResource("2_f433h")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/SkyInRiver"]
+position = Vector2(875, 322.5)
+scale = Vector2(0.461053, 0.539167)
+texture = ExtResource("9_y1bai")
+
+[node name="Village" type="Parallax2D" parent="CanvasLayer"]
+repeat_size = Vector2(1800, 0)
+autoscroll = Vector2(-300, 0)
+script = ExtResource("2_f433h")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Village"]
+position = Vector2(916, 324)
+scale = Vector2(0.483421, 0.544167)
+texture = ExtResource("10_iqwx1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.296
+anchor_right = 0.704
+anchor_bottom = 1.0
+offset_left = 199.008
+offset_top = 299.5
+offset_right = -199.008
+offset_bottom = -299.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+z_index = 1
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 5
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.792732, 0.429947, 0, 1)
+theme_override_fonts/font = ExtResource("10_ysjxp")
+theme_override_font_sizes/font_size = 150
+text = "King of the Race
+"
+
+[node name="START" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ysjxp")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_ysjxp")
+text = "START"
+flat = true
+
+[node name="QUIT" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ysjxp")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/focus = SubResource("StyleBoxFlat_posw2")
+text = "QUIT"
+flat = true
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/START" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QUIT" to="." method="_on_quit_pressed"]

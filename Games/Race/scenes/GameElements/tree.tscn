@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2fhxqnt7nck2"]
+
+[ext_resource type="Texture2D" uid="uid://cn287i6vt8gvv" path="res://Assets/Racing_AssetPack_Personal/AnimatedTreeFree/AnimatedTreeFree/trunk.png" id="1_nuaht"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qsim"]
+size = Vector2(14, 14)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_3qsim")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 6
+position = Vector2(1, 1)
+texture = ExtResource("1_nuaht")

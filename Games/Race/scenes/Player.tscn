@@ -1,0 +1,69 @@
+[gd_scene load_steps=7 format=3 uid="uid://dujo8837sclxt"]
+
+[ext_resource type="Texture2D" uid="uid://bf0xn4nvneppy" path="res://Assets/Racing_AssetPack_Personal/Racing_AssetPack_Personal/Racing_AssetPack - Copy.png" id="1_iqfoa"]
+[ext_resource type="Script" uid="uid://dgo88lt8jgk85" path="res://Games/Race/scripts/Car/player.gd" id="1_umwcn"]
+[ext_resource type="PackedScene" uid="uid://cww2it3ex5bms" path="res://Games/Race/scenes/Gas.tscn" id="3_ldjuq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3l0b4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6c0xh"]
+size = Vector2(9, 17)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ldjuq"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="Car" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+collision_mask = 2
+script = ExtResource("1_umwcn")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 5
+rotation = 1.5708
+texture = ExtResource("1_iqfoa")
+region_enabled = true
+region_rect = Rect2(470, 338, 8, 16)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+material = SubResource("ShaderMaterial_3l0b4")
+rotation = 1.5708
+texture = ExtResource("1_iqfoa")
+region_enabled = true
+region_rect = Rect2(470, 306, 8, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.81e-06, 0)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_6c0xh")
+
+[node name="boostimer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="CPUParticles2D2" parent="." instance=ExtResource("3_ldjuq")]
+visible = true
+position = Vector2(-10.5, 1)
+emitting = false
+amount = 13
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.12, 1.12)
+limit_left = -250
+limit_top = -380
+limit_right = 1500
+limit_bottom = 1000
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_interval = 0.001
+replication_config = SubResource("SceneReplicationConfig_ldjuq")
+
+[connection signal="timeout" from="boostimer" to="." method="_on_boostimer_timeout"]

@@ -1,0 +1,249 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5dfwjmjhqcsj"]
+
+[ext_resource type="Script" uid="uid://cp8rvrbwt8xbc" path="res://Games/Race/scripts/UI_scripts/ending_race.gd" id="1_qxkaj"]
+[ext_resource type="FontFile" uid="uid://7pd1bf7pp0t6" path="res://Assets/m6x11.ttf" id="2_yifjc"]
+
+[sub_resource type="Animation" id="Animation_4xaja"]
+resource_name = "EndRace"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0.337255)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8auhi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xurcb"]
+_data = {
+&"EndRace": SubResource("Animation_4xaja"),
+&"RESET": SubResource("Animation_8auhi")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xurcb"]
+bg_color = Color(0.180005, 0.180005, 0.180005, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.729913, 0.598787, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="EndAnimation" type="CanvasLayer"]
+script = ExtResource("1_qxkaj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xurcb")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.424
+anchor_top = 0.31
+anchor_right = 0.588
+anchor_bottom = 0.66
+offset_left = -38.448
+offset_top = -50.88
+offset_right = -39.376
+offset_bottom = -27.68
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+size_flags_horizontal = 4
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xurcb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.048
+anchor_right = 0.894
+anchor_bottom = 0.242
+offset_left = -0.0559998
+offset_top = 0.104
+offset_right = -0.0720062
+offset_bottom = 0.0659981
+grow_horizontal = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 6
+theme_override_constants/line_spacing = 4
+theme_override_fonts/font = ExtResource("2_yifjc")
+text = "Lap"
+
+[node name="Label2" type="Label" parent="MarginContainer/Panel/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yifjc")
+text = "Time"
+
+[node name="Results1" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Lap1" type="Label" parent="MarginContainer/Panel/VBoxContainer/Results1"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("2_yifjc")
+text = "1"
+
+[node name="Time1" type="Label" parent="MarginContainer/Panel/VBoxContainer/Results1"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("2_yifjc")
+
+[node name="Results2" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Lap2" type="Label" parent="MarginContainer/Panel/VBoxContainer/Results2"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("2_yifjc")
+text = "2"
+
+[node name="Time2" type="Label" parent="MarginContainer/Panel/VBoxContainer/Results2"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("2_yifjc")
+
+[node name="Results3" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 60
+
+[node name="Lap3" type="Label" parent="MarginContainer/Panel/VBoxContainer/Results3"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("2_yifjc")
+text = "3"
+
+[node name="Time3" type="Label" parent="MarginContainer/Panel/VBoxContainer/Results3"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("2_yifjc")
+
+[node name="Results4" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Lap4" type="Label" parent="MarginContainer/Panel/VBoxContainer/Results4"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("2_yifjc")
+text = "4"
+
+[node name="Time4" type="Label" parent="MarginContainer/Panel/VBoxContainer/Results4"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("2_yifjc")
+
+[node name="Results5" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Lap5" type="Label" parent="MarginContainer/Panel/VBoxContainer/Results5"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("2_yifjc")
+text = "5"
+
+[node name="Time5" type="Label" parent="MarginContainer/Panel/VBoxContainer/Results5"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("2_yifjc")
+horizontal_alignment = 2
+
+[node name="RaceResult" type="HBoxContainer" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/VBoxContainer/RaceResult"]
+layout_mode = 2
+size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("2_yifjc")
+text = "Race Time:"
+
+[node name="RaceTime" type="Label" parent="MarginContainer/Panel/VBoxContainer/RaceResult"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("2_yifjc")
+horizontal_alignment = 2
+
+[node name="PlayAgain" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yifjc")
+text = "PLAY AGAIN"
+
+[node name="BackToGameChoice" type="Button" parent="MarginContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yifjc")
+text = "Back to Menu"
+
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/PlayAgain" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/VBoxContainer/BackToGameChoice" to="." method="_on_back_to_game_choice_pressed"]

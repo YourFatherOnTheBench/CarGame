@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://s54avf1mc70b"]
+
+[ext_resource type="Script" uid="uid://dkohgqdlrm2" path="res://UI/go_back_scene.gd" id="1_lkt73"]
+[ext_resource type="FontFile" uid="uid://7pd1bf7pp0t6" path="res://Assets/m6x11.ttf" id="1_oinkc"]
+
+[node name="GoBackScene" type="CanvasLayer"]
+script = ExtResource("1_lkt73")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+
+[node name="Button" type="Button" parent="MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_oinkc")
+theme_override_font_sizes/font_size = 30
+text = "Back"
+flat = true
+
+[connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]
