@@ -23,15 +23,20 @@ func _process(delta: float) -> void:
 		time += delta
 		if showtimer:
 			timeLabel.text = "%.2f" % time + "s"
-		
+@rpc("call_local")
 func Did_lap():
 	Globals.LapTimes.append(snapped(time, 0.01))
+	for i in Multiplayer.Players:
+		if str(Multiplayer.Players[i].id) == str(multiplayer.get_unique_id()):
+			Multiplayer.Players[i]["Laps"].append(snapped(time , 0.01))
+	print(Multiplayer.Players)
 	print(Globals.LapTimes)
 	if laps_made == 0:
-		laps_made += 1
+		laps_made+= 1
 		laps.text = str(laps_made) + "/5"
 	else:
 		update_ui()
+		
 
 	
 func update_ui():

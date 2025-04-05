@@ -26,13 +26,14 @@ var max_steering_angle = 15  # Normal steeringa
 var min_steering_angle = 5   # Reduced steering at high speed
 
 func _ready() -> void:
+	print(get_multiplayer_authority())
 	cameraShakeNoise = FastNoiseLite.new()
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
-	if is_multiplayer_authority():
+	if self.name == str(multiplayer.get_unique_id()):
 		$Camera2D.make_current()
 	
 func _physics_process(delta: float) -> void:
-	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id():
+	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() or Globals.SinglePlayer:
 		acceleration = Vector2.ZERO
 		if !Globals.Stop_moving:
 			$CPUParticles2D2.emitting = true

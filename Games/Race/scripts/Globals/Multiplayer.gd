@@ -47,7 +47,8 @@ func SendPlayerInformations(name, id):
 	if !Players.has(id):
 		Players[id] = {
 			"name": name,
-			"id": id
+			"id": id,
+			"Laps": []
 		}
 	if multiplayer.is_server():
 		for i in Players:

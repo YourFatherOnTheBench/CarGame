@@ -9,15 +9,22 @@ func _ready() -> void:
 	Globals.LapTimes = []
 	Globals.RaceTime = 0
 	Globals.can_end.connect(EndRace)
-	var index = 0
-	for i in Multiplayer.Players:
+	if !Globals.SinglePlayer:
+		var index = 0
+		for i in Multiplayer.Players:
+			var currentPlayer = PlayerScene.instantiate()
+			currentPlayer.name = str(Multiplayer.Players[i].id)
+			add_child(currentPlayer)
+			for spawn in $SpawnPoints.get_children():
+				if spawn.name == str(index):
+					currentPlayer.global_position = spawn.global_position
+			index += 1
+	else:
 		var currentPlayer = PlayerScene.instantiate()
-		currentPlayer.name = str(Multiplayer.Players[i].id)
 		add_child(currentPlayer)
-		for spawn in $SpawnPoints.get_children():
-			if spawn.name == str(index):
-				currentPlayer.global_position = spawn.global_position
-		index += 1
+		currentPlayer.global_position = $"SpawnPoints/0".global_position
+		
+			
 	
 func EndRace():
 	add_child(endingscene)

@@ -152,12 +152,19 @@ theme_override_font_sizes/font_size = 150
 text = "King of the Race
 "
 
-[node name="START" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="SinglePlayer" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ysjxp")
+theme_override_font_sizes/font_size = 60
+text = "SINGLEPLAYER"
+flat = true
+
+[node name="Multiplayer" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("10_ysjxp")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxFlat_ysjxp")
-text = "START"
+text = "MULTIPLAYER"
 flat = true
 
 [node name="QUIT" type="Button" parent="MarginContainer/VBoxContainer"]
@@ -168,5 +175,6 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_posw2")
 text = "QUIT"
 flat = true
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/START" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/SinglePlayer" to="." method="_on_single_player_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Multiplayer" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QUIT" to="." method="_on_quit_pressed"]

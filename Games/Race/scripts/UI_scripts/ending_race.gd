@@ -27,12 +27,12 @@ func RaceEnding():
 	race_time.text = "%.2f" % RaceTime + "s"
 	Globals.Stop_moving = true
 
-
+@rpc("any_peer", "call_local")
 func _on_button_pressed() -> void:
 	Globals.race_started = false
 	Transition.play_animation(get_parent().scene_file_path)
 
-
+@rpc("any_peer", "call_local")
 func _on_back_to_game_choice_pressed() -> void:
 	Globals.race_started = false
 	Transition.play_animation("res://UI/GameChoice.tscn")

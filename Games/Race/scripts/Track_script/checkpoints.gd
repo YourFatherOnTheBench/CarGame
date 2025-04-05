@@ -35,6 +35,7 @@ func _on_check_6_body_entered(_body: Node2D) -> void:
 func _on_check_7_body_entered(_body: Node2D) -> void:
 	if checkpoint_made == 6:
 		checkpoint_made += 1
+		
 
 func _on_start_line_body_entered(_body: Node2D) -> void:
 	if checkpoint_made >= Globals.LapsNeedToBeMade:
