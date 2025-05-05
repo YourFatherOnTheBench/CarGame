@@ -3,6 +3,10 @@ extends CharacterBody2D
 @onready var tween: Tween 
 @onready var camera: Camera2D = $Camera2D
 
+@onready var other_player_scene: PackedScene = preload("res://Games/Race/scenes/other_players.tscn")
+@onready var my_player_scene: PackedScene = preload("res://Games/Race/scenes/my_player.tscn")
+
+
 var cameraShakeNoise: FastNoiseLite
 
 const Engine_power: float = 150
@@ -16,33 +20,40 @@ var drag: float = -0.001
 var friction_force
 var drag_force
 var braking: int = -75
+
 const max_speed_reversal: int = 250
 const max_wheel: int = 75
 const min_wheel: int = 40
 const slip_spped: int = 275
 const traction_fast: float = 0.1
 const traction_slow: float = 0.7
-var max_steering_angle = 15  # Normal steeringa
-var min_steering_angle = 5   # Reduced steering at high speed
+
+var max_steering_angle = 15  
+var min_steering_angle = 5  
 
 func _ready() -> void:
-	print(get_multiplayer_authority())
+	
 	cameraShakeNoise = FastNoiseLite.new()
 	$MultiplayerSynchronizer.set_multiplayer_authority(str(name).to_int())
+
+	
 	if self.name == str(multiplayer.get_unique_id()):
+
 		$Camera2D.make_current()
+	apply_car()
 	
 func _physics_process(delta: float) -> void:
-	if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() or Globals.SinglePlayer:
-		acceleration = Vector2.ZERO
-		if !Globals.Stop_moving:
-			$CPUParticles2D2.emitting = true
-			get_input()
-		
-		calculate_steering(delta)
-		apply_friction()
-		velocity += acceleration * delta
-		move_and_slide()
+	if multiplayer.multiplayer_peer:
+		if $MultiplayerSynchronizer.get_multiplayer_authority() == multiplayer.get_unique_id() or Globals.SinglePlayer:
+			acceleration = Vector2.ZERO
+			if !Globals.Stop_moving:
+				$CPUParticles2D2.emitting = true
+				get_input()
+			
+			calculate_steering(delta)
+			apply_friction()
+			velocity += acceleration * delta
+			move_and_slide()
 	
 func apply_friction():
 	if velocity.length() < 1:
@@ -92,7 +103,6 @@ func calculate_steering(delta):
 		velocity = -new_heading * min(velocity.length() , max_speed_reversal)
 	rotation = new_heading.angle()
 
-
 func boost():
 	var camera_tween = get_tree().create_tween()
 	camera_tween.tween_method(CameraShaking, 3.0, 1.0, 1)
@@ -117,3 +127,10 @@ func CameraShaking(intensity: float):
 	camera.offset.x = cameraOffset
 	camera.offset.y = cameraOffset
 	
+func apply_car():
+	if self.name == str(multiplayer.get_unique_id()):
+		var my_player = my_player_scene.instantiate()
+		add_child(my_player)
+	else:
+		var other_player = other_player_scene.instantiate()
+		add_child(other_player)

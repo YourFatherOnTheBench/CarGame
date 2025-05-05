@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq30qw3c8ayni"]
+
+[ext_resource type="FontFile" uid="uid://7pd1bf7pp0t6" path="res://Assets/m6x11.ttf" id="1_cmtb6"]
+[ext_resource type="Script" uid="uid://crrjqhmklj5gs" path="res://Games/Race/scripts/UI_scripts/player_data.gd" id="1_ukrjl"]
+
+[node name="player" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 75
+alignment = 1
+script = ExtResource("1_ukrjl")
+
+[node name="place" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_cmtb6")
+theme_override_font_sizes/font_size = 24
+
+[node name="name" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_cmtb6")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+
+[node name="time" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_cmtb6")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 2

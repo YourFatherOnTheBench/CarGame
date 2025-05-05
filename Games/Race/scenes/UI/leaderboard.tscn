@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyr3ijjsx13ss"]
+[gd_scene load_steps=5 format=3 uid="uid://cyr3ijjsx13ss"]
 
 [ext_resource type="Script" uid="uid://dp1obkvcsnuxy" path="res://Games/Race/scripts/UI_scripts/leaderboard.gd" id="1_q4j0n"]
 [ext_resource type="FontFile" uid="uid://7pd1bf7pp0t6" path="res://Assets/m6x11.ttf" id="1_wown3"]
@@ -12,6 +12,18 @@ border_width_bottom = 1
 border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 2
 corner_radius_bottom_right = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dd418"]
+bg_color = Color(0.102, 0.102, 0.3, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [node name="Control" type="CanvasLayer"]
 script = ExtResource("1_q4j0n")
@@ -60,3 +72,48 @@ text = "  Time: 0:00"
 vertical_alignment = 1
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 100.0
+offset_right = 274.0
+offset_bottom = 126.0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Vbox" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer/Vbox"]
+custom_minimum_size = Vector2(10, 25)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_dd418")
+
+[node name="Hbox" type="HBoxContainer" parent="Control/MarginContainer/Vbox/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.057
+anchor_right = 1.0
+offset_left = 0.0819998
+offset_bottom = 26.0
+theme_override_constants/separation = 25
+
+[node name="Label" type="Label" parent="Control/MarginContainer/Vbox/Panel/Hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_wown3")
+text = "Country"
+
+[node name="Label2" type="Label" parent="Control/MarginContainer/Vbox/Panel/Hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_wown3")
+text = "Time"
+
+[node name="Label3" type="Label" parent="Control/MarginContainer/Vbox/Panel/Hbox"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_wown3")
+text = "Lap"

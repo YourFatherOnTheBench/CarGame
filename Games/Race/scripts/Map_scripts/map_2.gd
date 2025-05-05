@@ -1,9 +1,11 @@
 extends Control
 
 const checkPointsOfMap: int = 10
-var EndingRace: PackedScene = preload("res://Games/Race/scenes/UI/EndingRace.tscn")
+@onready var EndingRace: PackedScene = preload("res://Games/Race/scenes/UI/EndingRace.tscn")
+@onready var EndingMultiplayerScene: PackedScene = preload("res://EndingLeaderBoeardMultiPlayer.tscn")
 @export var PlayerScene: PackedScene
 @onready var endingscene = EndingRace.instantiate()
+@onready var EndingMultiplayer = EndingMultiplayerScene.instantiate()
 
 func _ready() -> void:
 	Globals.LapsNeedToBeMade = checkPointsOfMap
@@ -20,6 +22,9 @@ func _ready() -> void:
 				if spawn.name == str(index):
 					currentPlayer.global_position = spawn.global_position
 					currentPlayer.rotation_degrees = -90
+			#if currentPlayer.name != str(multiplayer.get_unique_id()):
+				#var car = currentPlayer.get_child(1)
+				#car.modulate = "#af88df"
 			index += 1
 	else:
 		var currentPlayer = PlayerScene.instantiate()
@@ -28,7 +33,10 @@ func _ready() -> void:
 		currentPlayer.rotation_degrees = -90
 	
 func EndRace():
-	add_child(endingscene)
+	if Globals.SinglePlayer:
+		add_child(endingscene)
+	else:
+		add_child(EndingMultiplayer)
 	Globals.race_ended.emit()
 
 func _on_track_1_body_entered(body: Node2D) -> void:

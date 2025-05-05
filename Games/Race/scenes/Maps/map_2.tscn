@@ -6,10 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://b0bbqbpcigkas" path="res://Assets/Racing_AssetPack_Personal/AnimatedTreeFree/AnimatedTreeFree/Freedecorations.png" id="4_nawgu"]
 [ext_resource type="PackedScene" uid="uid://b2fhxqnt7nck2" path="res://Games/Race/scenes/GameElements/tree.tscn" id="5_gracy"]
 [ext_resource type="Texture2D" uid="uid://b8ob4jmqcu2tl" path="res://Assets/Racing_AssetPack_Personal/AnimatedTreeFree/AnimatedTreeFree/Leafes.png" id="6_fqsvk"]
+[ext_resource type="Texture2D" uid="uid://bap55oagornvc" path="res://Assets/light1.png" id="7_lj2ll"]
 [ext_resource type="PackedScene" uid="uid://b8tlqhumt0vc1" path="res://Games/Race/scenes/GameElements/booster.tscn" id="7_tffab"]
 [ext_resource type="Script" uid="uid://bpq14m130fiuu" path="res://Games/Race/scripts/Track_script/checkpointsMap2.gd" id="8_nb5ip"]
 [ext_resource type="PackedScene" uid="uid://bwgui1uh0q6b" path="res://Games/Race/scenes/UI/StartRaceAnimation.tscn" id="9_kkn6k"]
-[ext_resource type="PackedScene" uid="uid://b2uppv43i1scu" path="res://Games/Race/scenes/UI/CarsLeaderBoard.tscn" id="10_7dvk2"]
 [ext_resource type="PackedScene" uid="uid://cyr3ijjsx13ss" path="res://Games/Race/scenes/UI/leaderboard.tscn" id="11_25beo"]
 [ext_resource type="AudioStream" uid="uid://cuxpq061s8y3c" path="res://Assets/Racing_AssetPack_Personal/2000's Retro Racing Game Music Pack/2000's Retro Racing Game Music Pack/LOOPS/9. Knight Rider (LOOP) [128 bpm].wav" id="12_risvm"]
 [ext_resource type="PackedScene" uid="uid://s54avf1mc70b" path="res://UI/goBackScene.tscn" id="13_kb3jq"]
@@ -4653,9 +4653,9 @@ anchor_left = -0.708
 anchor_top = -1.025
 anchor_right = 1.855
 anchor_bottom = 2.245
-offset_left = 1.61603
+offset_left = 2.61603
 offset_top = 0.200012
-offset_right = 2.03979
+offset_right = 3.03979
 offset_bottom = 0.239868
 grow_horizontal = 2
 grow_vertical = 2
@@ -4689,7 +4689,52 @@ position = Vector2(1, -30.5)
 sprite_frames = SubResource("SpriteFrames_hxjw3")
 autoplay = "default"
 
+[node name="light" type="Node2D" parent="Container/decorations"]
+
+[node name="PointLight2D" type="PointLight2D" parent="Container/decorations/light"]
+position = Vector2(690, 162)
+energy = 0.7
+shadow_enabled = true
+texture = ExtResource("7_lj2ll")
+texture_scale = 1.5
+
+[node name="PointLight2D2" type="PointLight2D" parent="Container/decorations/light"]
+position = Vector2(1040, 162)
+energy = 0.7
+shadow_enabled = true
+texture = ExtResource("7_lj2ll")
+texture_scale = 1.5
+
+[node name="PointLight2D3" type="PointLight2D" parent="Container/decorations/light"]
+position = Vector2(478, -48)
+energy = 0.7
+shadow_enabled = true
+texture = ExtResource("7_lj2ll")
+texture_scale = 1.5
+
+[node name="PointLight2D4" type="PointLight2D" parent="Container/decorations/light"]
+position = Vector2(703, 418)
+energy = 0.7
+shadow_enabled = true
+texture = ExtResource("7_lj2ll")
+texture_scale = 1.5
+
+[node name="PointLight2D5" type="PointLight2D" parent="Container/decorations/light"]
+position = Vector2(1058, 433)
+energy = 0.7
+shadow_enabled = true
+texture = ExtResource("7_lj2ll")
+texture_scale = 1.5
+
+[node name="PointLight2D6" type="PointLight2D" parent="Container/decorations/light"]
+position = Vector2(1281, -31)
+energy = 0.7
+shadow_enabled = true
+texture = ExtResource("7_lj2ll")
+texture_scale = 1.5
+
 [node name="Boosters" type="Node2D" parent="Container"]
+metadata/_edit_lock_ = true
 
 [node name="Area2D3" parent="Container/Boosters" instance=ExtResource("7_tffab")]
 position = Vector2(1385, 19)
@@ -4699,8 +4744,10 @@ rotation = -3.14159
 position = Vector2(377, 354)
 
 [node name="WorldBoundaries" type="Node2D" parent="Container"]
+metadata/_edit_lock_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Container/WorldBoundaries"]
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Container/WorldBoundaries/StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_y7lga")
@@ -4716,6 +4763,7 @@ shape = SubResource("WorldBoundaryShape2D_5vurt")
 
 [node name="AreaOfTrack" type="Node2D" parent="Container"]
 visible = false
+metadata/_edit_lock_ = true
 
 [node name="track1" type="Area2D" parent="Container/AreaOfTrack"]
 
@@ -4734,73 +4782,73 @@ visible = false
 curve = SubResource("Curve2D_y7lga")
 script = ExtResource("8_nb5ip")
 
-[node name="check1" type="Area2D" parent="Container/Path2D"]
+[node name="1" type="Area2D" parent="Container/Path2D"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/check1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/1"]
 position = Vector2(475.5, -161.5)
 shape = SubResource("RectangleShape2D_tbbkw")
 
-[node name="check2" type="Area2D" parent="Container/Path2D"]
+[node name="2" type="Area2D" parent="Container/Path2D"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/check2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/2"]
 position = Vector2(649, 89)
 shape = SubResource("RectangleShape2D_rq5lg")
 
-[node name="check3" type="Area2D" parent="Container/Path2D"]
+[node name="3" type="Area2D" parent="Container/Path2D"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/check3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/3"]
 position = Vector2(1021, 97)
 shape = SubResource("RectangleShape2D_5vurt")
 
-[node name="check4" type="Area2D" parent="Container/Path2D"]
+[node name="4" type="Area2D" parent="Container/Path2D"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/check4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/4"]
 position = Vector2(1272.5, -161)
 shape = SubResource("RectangleShape2D_kk36t")
 
-[node name="check5" type="Area2D" parent="Container/Path2D"]
+[node name="5" type="Area2D" parent="Container/Path2D"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/check5"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/5"]
 position = Vector2(1364, 124)
 shape = SubResource("RectangleShape2D_vf1xy")
 
-[node name="check6" type="Area2D" parent="Container/Path2D"]
+[node name="6" type="Area2D" parent="Container/Path2D"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/check6"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/6"]
 position = Vector2(1259, 479)
 shape = SubResource("RectangleShape2D_ujd0c")
 
-[node name="check7" type="Area2D" parent="Container/Path2D"]
+[node name="7" type="Area2D" parent="Container/Path2D"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/check7"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/7"]
 position = Vector2(1048.5, 316.5)
 shape = SubResource("RectangleShape2D_7mxnx")
 
-[node name="check8" type="Area2D" parent="Container/Path2D"]
+[node name="8" type="Area2D" parent="Container/Path2D"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/check8"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/8"]
 position = Vector2(875, 482)
 shape = SubResource("RectangleShape2D_7mxnx")
 
-[node name="check9" type="Area2D" parent="Container/Path2D"]
+[node name="9" type="Area2D" parent="Container/Path2D"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/check9"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/9"]
 position = Vector2(695, 321)
 shape = SubResource("RectangleShape2D_7mxnx")
 
-[node name="check10" type="Area2D" parent="Container/Path2D"]
+[node name="10" type="Area2D" parent="Container/Path2D"]
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/check10"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Container/Path2D/10"]
 position = Vector2(489, 482)
 shape = SubResource("RectangleShape2D_7mxnx")
 
@@ -4816,8 +4864,6 @@ shape = SubResource("RectangleShape2D_4l4gx")
 
 [node name="startAnimation" parent="." instance=ExtResource("9_kkn6k")]
 
-[node name="CarLeaderBoard" parent="." instance=ExtResource("10_7dvk2")]
-
 [node name="LeaderBoard" parent="." instance=ExtResource("11_25beo")]
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
@@ -4827,6 +4873,7 @@ lifetime = 2.5
 preprocess = 2.5
 visibility_rect = Rect2(-100, -500, 2000, 1500)
 process_material = SubResource("ParticleProcessMaterial_4l4gx")
+metadata/_edit_lock_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_risvm")
@@ -4857,14 +4904,13 @@ position = Vector2(-171, -72)
 [connection signal="body_exited" from="Container/AreaOfTrack/track1" to="." method="_on_track_1_body_exited"]
 [connection signal="body_entered" from="Container/AreaOfTrack/track2" to="." method="_on_track_2_body_entered"]
 [connection signal="body_exited" from="Container/AreaOfTrack/track2" to="." method="_on_track_2_body_exited"]
-[connection signal="body_entered" from="Container/Path2D/check1" to="Container/Path2D" method="_on_check_1_body_entered"]
-[connection signal="body_entered" from="Container/Path2D/check2" to="Container/Path2D" method="_on_check_2_body_entered"]
-[connection signal="body_entered" from="Container/Path2D/check3" to="Container/Path2D" method="_on_check_3_body_entered"]
-[connection signal="body_entered" from="Container/Path2D/check4" to="Container/Path2D" method="_on_check_4_body_entered"]
-[connection signal="body_entered" from="Container/Path2D/check5" to="Container/Path2D" method="_on_check_5_body_entered"]
-[connection signal="body_entered" from="Container/Path2D/check6" to="Container/Path2D" method="_on_check_6_body_entered"]
-[connection signal="body_entered" from="Container/Path2D/check7" to="Container/Path2D" method="_on_check_7_body_entered"]
-[connection signal="body_entered" from="Container/Path2D/check8" to="Container/Path2D" method="_on_check_8_body_entered"]
-[connection signal="body_entered" from="Container/Path2D/check9" to="Container/Path2D" method="_on_check_9_body_entered"]
-[connection signal="body_entered" from="Container/Path2D/check10" to="Container/Path2D" method="_on_check_10_body_entered"]
+[connection signal="body_entered" from="Container/Path2D/2" to="Container/Path2D" method="_on_check_2_body_entered"]
+[connection signal="body_entered" from="Container/Path2D/3" to="Container/Path2D" method="_on_check_3_body_entered"]
+[connection signal="body_entered" from="Container/Path2D/4" to="Container/Path2D" method="_on_check_4_body_entered"]
+[connection signal="body_entered" from="Container/Path2D/5" to="Container/Path2D" method="_on_check_5_body_entered"]
+[connection signal="body_entered" from="Container/Path2D/6" to="Container/Path2D" method="_on_check_6_body_entered"]
+[connection signal="body_entered" from="Container/Path2D/7" to="Container/Path2D" method="_on_check_7_body_entered"]
+[connection signal="body_entered" from="Container/Path2D/8" to="Container/Path2D" method="_on_check_8_body_entered"]
+[connection signal="body_entered" from="Container/Path2D/9" to="Container/Path2D" method="_on_check_9_body_entered"]
+[connection signal="body_entered" from="Container/Path2D/10" to="Container/Path2D" method="_on_check_10_body_entered"]
 [connection signal="body_entered" from="Container/FinishLine" to="Container/Path2D" method="_on_finish_line_body_entered"]

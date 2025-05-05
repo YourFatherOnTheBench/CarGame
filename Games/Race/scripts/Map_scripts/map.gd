@@ -1,9 +1,15 @@
 extends Control
 
 const checkpointsofMap: int = 7
-var EndingRace: PackedScene = preload("res://Games/Race/scenes/UI/EndingRace.tscn")
+@onready var EndingRace: PackedScene = preload("res://Games/Race/scenes/UI/EndingRace.tscn")
+@onready var EndingMultiplayerScene: PackedScene = preload("res://EndingLeaderBoeardMultiPlayer.tscn")
 @onready var endingscene = EndingRace.instantiate()
+@onready var EndingMultiplayer = EndingMultiplayerScene.instantiate()
+
 @export var PlayerScene: PackedScene
+
+
+
 func _ready() -> void:
 	Globals.LapsNeedToBeMade = checkpointsofMap
 	Globals.LapTimes = []
@@ -27,7 +33,10 @@ func _ready() -> void:
 			
 	
 func EndRace():
-	add_child(endingscene)
+	if Globals.SinglePlayer:
+		add_child(endingscene)
+	else:
+		add_child(EndingMultiplayer)
 	Globals.race_ended.emit()
 
 

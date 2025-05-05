@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=4 uid="uid://bwf6qn2kh424n"]
+[gd_scene load_steps=40 format=4 uid="uid://bwf6qn2kh424n"]
 
 [ext_resource type="Script" uid="uid://dogffjunur8v7" path="res://Games/Race/scripts/Map_scripts/map_3.gd" id="1_bpqwh"]
 [ext_resource type="PackedScene" uid="uid://dujo8837sclxt" path="res://Games/Race/scenes/Player.tscn" id="2_guu70"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://7hyxll3xgt5b" path="res://Assets/Racing_AssetPack_Personal/Snowy Tileset Without BG.png" id="5_ayhtd"]
 [ext_resource type="PackedScene" uid="uid://b8tlqhumt0vc1" path="res://Games/Race/scenes/GameElements/booster.tscn" id="6_xhyfw"]
 [ext_resource type="Script" uid="uid://bbjmih1l5tshx" path="res://Games/Race/scripts/Track_script/checkpoints.gd" id="7_plpr6"]
-[ext_resource type="PackedScene" uid="uid://b2uppv43i1scu" path="res://Games/Race/scenes/UI/CarsLeaderBoard.tscn" id="8_4nqmu"]
 [ext_resource type="PackedScene" uid="uid://cyr3ijjsx13ss" path="res://Games/Race/scenes/UI/leaderboard.tscn" id="9_38okv"]
 [ext_resource type="PackedScene" uid="uid://bwgui1uh0q6b" path="res://Games/Race/scenes/UI/StartRaceAnimation.tscn" id="10_nkpep"]
 [ext_resource type="Texture2D" uid="uid://dmj1gqmdbq0bo" path="res://Assets/particle.png" id="11_kqktq"]
@@ -4740,8 +4739,6 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="container/Path2D/check7"]
 position = Vector2(475, 640)
 shape = SubResource("RectangleShape2D_158fc")
-
-[node name="CarLeaderBoard" parent="." instance=ExtResource("8_4nqmu")]
 
 [node name="Control" parent="." instance=ExtResource("9_38okv")]
 

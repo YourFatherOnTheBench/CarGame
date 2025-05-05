@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://78o5gnadxiyp"]
+
+[ext_resource type="FontFile" uid="uid://7pd1bf7pp0t6" path="res://Assets/m6x11.ttf" id="1_liavk"]
+[ext_resource type="Script" uid="uid://bpaahtnpv6i1b" path="res://Games/Race/scripts/UI_scripts/multi_player_leader_board.gd" id="1_oxqfr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxqfr"]
+bg_color = Color(0.102, 0.102, 0.3, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="Border" type="Panel"]
+custom_minimum_size = Vector2(150, 22)
+layout_direction = 1
+offset_right = 164.0
+offset_bottom = 22.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_oxqfr")
+script = ExtResource("1_oxqfr")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 15.0
+offset_top = 6.0
+offset_right = 158.0
+offset_bottom = 20.0
+theme_override_constants/separation = 30
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_liavk")
+
+[node name="time" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_liavk")
+text = "0.00s"
+
+[node name="laps" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_liavk")
+text = "1/5"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

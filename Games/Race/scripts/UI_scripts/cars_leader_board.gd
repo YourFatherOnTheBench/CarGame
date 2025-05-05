@@ -1,8 +1,8 @@
-extends CanvasLayer
+extends Panel
 
 
-@onready var timeLabel: Label = $Control/MarginContainer/Vbox/Panel2/HBoxContainer/time
-@onready var laps: Label = $Control/MarginContainer/Vbox/Panel2/HBoxContainer/laps
+@onready var timeLabel: Label = $HBoxContainer/time
+@onready var laps: Label = $HBoxContainer/laps
 @onready var timer: Timer = $Timer
 
 var laps_made = 0
@@ -23,14 +23,11 @@ func _process(delta: float) -> void:
 		time += delta
 		if showtimer:
 			timeLabel.text = "%.2f" % time + "s"
-@rpc("call_local")
-func Did_lap():
+
+func Did_lap(_body_name):
 	Globals.LapTimes.append(snapped(time, 0.01))
-	for i in Multiplayer.Players:
-		if str(Multiplayer.Players[i].id) == str(multiplayer.get_unique_id()):
-			Multiplayer.Players[i]["Laps"].append(snapped(time , 0.01))
-	print(Multiplayer.Players)
-	print(Globals.LapTimes)
+	#if multiplayer.get_unique_id() == Multiplayer.Players[multiplayer.get_unique_id()]["id"]:
+		#Multiplayer.Players[multiplayer.get_unique_id()]["Laps"].append(snapped(time , 0.01))
 	if laps_made == 0:
 		laps_made+= 1
 		laps.text = str(laps_made) + "/5"

@@ -8,5 +8,6 @@ var RaceTime: float
 var SinglePlayer
 
 signal can_end
-signal lap_made
+signal lap_made(body)
 signal race_ended
+signal sync_data(pid, time)

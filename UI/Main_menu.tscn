@@ -159,12 +159,19 @@ theme_override_font_sizes/font_size = 60
 text = "SINGLEPLAYER"
 flat = true
 
-[node name="Multiplayer" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="HOST" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("10_ysjxp")
+theme_override_font_sizes/font_size = 60
+text = "HOST"
+flat = true
+
+[node name="JOIN" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("10_ysjxp")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/focus = SubResource("StyleBoxFlat_ysjxp")
-text = "MULTIPLAYER"
+text = "JOIN"
 flat = true
 
 [node name="QUIT" type="Button" parent="MarginContainer/VBoxContainer"]
@@ -176,5 +183,6 @@ text = "QUIT"
 flat = true
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/SinglePlayer" to="." method="_on_single_player_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Multiplayer" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HOST" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/JOIN" to="." method="_on_join_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QUIT" to="." method="_on_quit_pressed"]

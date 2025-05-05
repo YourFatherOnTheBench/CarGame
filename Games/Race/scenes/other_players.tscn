@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwueuawmxj5fn"]
+
+[ext_resource type="Texture2D" uid="uid://cesw5fn4blicg" path="res://Assets/Racing_AssetPack_Personal/Racing_AssetPack_Personal/Racing_AssetPack - Copy2.png" id="1_a6tlf"]
+
+[node name="other_players" type="Sprite2D"]
+z_index = 4
+rotation = 1.5708
+texture = ExtResource("1_a6tlf")
+region_enabled = true
+region_rect = Rect2(391, 255, 6, 14)

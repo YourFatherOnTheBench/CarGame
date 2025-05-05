@@ -1,9 +1,14 @@
 extends Control
 
-var EndingRace: PackedScene = preload("res://Games/Race/scenes/UI/EndingRace.tscn")
+@onready var EndingRace: PackedScene = preload("res://Games/Race/scenes/UI/EndingRace.tscn")
+@onready var EndingMultiplayerScene: PackedScene = preload("res://EndingLeaderBoeardMultiPlayer.tscn")
 const checkPointsOfMap: int = 7
 @onready var endingscene = EndingRace.instantiate()
+@onready var EndingMultiplayer = EndingMultiplayerScene.instantiate()
+
 @export var PlayerScene: PackedScene
+
+
 func _ready() -> void:
 	Globals.LapsNeedToBeMade = checkPointsOfMap
 	Globals.LapTimes = []
@@ -26,7 +31,10 @@ func _ready() -> void:
 		currentPlayer.global_position = $"SpawnPoints/0".global_position
 		currentPlayer.rotation_degrees = -90
 func EndRace():
-	add_child(endingscene)
+	if Globals.SinglePlayer:
+		add_child(endingscene)
+	else:
+		add_child(EndingMultiplayer)
 	Globals.race_ended.emit()
 
 func _on_whole_body_exited(body: Node2D) -> void:

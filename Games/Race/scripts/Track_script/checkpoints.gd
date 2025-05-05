@@ -1,46 +1,32 @@
 extends Path2D
 
 @onready var checkpoint_made: int = 7
+var i = 0
 
+func _ready() -> void:
+	for child in get_children():
+		child.connect("body_entered",  Callable(self, "add_checkpoint").bind(i))
+		i += 1
+func add_checkpoint(body: Node, index: int) -> void:
+	if Globals.SinglePlayer:
+		if index == checkpoint_made:
+			checkpoint_made += 1
+	else:
+		var player_id = int(body.name)
+		if Multiplayer.Players[player_id]["CheckpointsMade"] == index:
+			Multiplayer.Players[player_id]["CheckpointsMade"] += 1
 
-
-
-func _on_check_1_body_entered(_body: Node2D) -> void:
-	if checkpoint_made == 0:
-		checkpoint_made += 1
-
-func _on_check_2_body_entered(_body: Node2D) -> void:
-	if checkpoint_made == 1:
-		checkpoint_made += 1
-	
-func _on_check_3_body_entered(_body: Node2D) -> void:
-	if checkpoint_made == 2:
-		checkpoint_made += 1
-
-func _on_check_4_body_entered(_body: Node2D) -> void:
-	if checkpoint_made == 3:
-		checkpoint_made += 1
-
-
-func _on_check_5_body_entered(_body: Node2D) -> void:
-	if checkpoint_made == 4:
-		checkpoint_made += 1
-
-
-func _on_check_6_body_entered(_body: Node2D) -> void:
-	if checkpoint_made == 5:
-		checkpoint_made += 1
-	
-
-func _on_check_7_body_entered(_body: Node2D) -> void:
-	if checkpoint_made == 6:
-		checkpoint_made += 1
-		
-
-func _on_start_line_body_entered(_body: Node2D) -> void:
-	if checkpoint_made >= Globals.LapsNeedToBeMade:
-		print('sigma')
-		checkpoint_made = 0
-		Globals.race_started = true
-		Globals.lap_made.emit()
+func _on_start_line_body_entered(body: Node2D) -> void:
+	if Globals.SinglePlayer:
+		if checkpoint_made >= Globals.LapsNeedToBeMade:
+			print(multiplayer.get_unique_id())
+			checkpoint_made = 0
+			Globals.race_started = true
+			Globals.lap_made.emit(body)
+	else:
+		var player_id = int(body.name)
+		if Multiplayer.Players[player_id]["CheckpointsMade"] >= Globals.LapsNeedToBeMade:
+			Globals.sync_data.emit(player_id, Multiplayer.Players[player_id]["time"])
+			Multiplayer.Players[player_id]["CheckpointsMade"] = 0
+			Globals.lap_made.emit(body)
 		

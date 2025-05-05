@@ -1,8 +1,7 @@
-[gd_scene load_steps=53 format=4 uid="uid://6ykrc120xq3e"]
+[gd_scene load_steps=52 format=4 uid="uid://6ykrc120xq3e"]
 
 [ext_resource type="Script" uid="uid://cdgjpo0y7lsq0" path="res://Games/Race/scripts/Map_scripts/map.gd" id="1_mv8en"]
 [ext_resource type="PackedScene" uid="uid://dujo8837sclxt" path="res://Games/Race/scenes/Player.tscn" id="2_jvadv"]
-[ext_resource type="PackedScene" uid="uid://b2uppv43i1scu" path="res://Games/Race/scenes/UI/CarsLeaderBoard.tscn" id="3_2csgo"]
 [ext_resource type="PackedScene" uid="uid://cyr3ijjsx13ss" path="res://Games/Race/scenes/UI/leaderboard.tscn" id="4_bhf3e"]
 [ext_resource type="PackedScene" uid="uid://b2fhxqnt7nck2" path="res://Games/Race/scenes/GameElements/tree.tscn" id="5_tnves"]
 [ext_resource type="Texture2D" uid="uid://b8ob4jmqcu2tl" path="res://Assets/Racing_AssetPack_Personal/AnimatedTreeFree/AnimatedTreeFree/Leafes.png" id="6_70k4q"]
@@ -8928,8 +8927,6 @@ grow_vertical = 2
 script = ExtResource("1_mv8en")
 PlayerScene = ExtResource("2_jvadv")
 
-[node name="CarLeaderBoard" parent="." instance=ExtResource("3_2csgo")]
-
 [node name="Leaderboard" parent="." instance=ExtResource("4_bhf3e")]
 
 [node name="container" type="Node2D" parent="."]
@@ -9099,10 +9096,10 @@ autoplay = true
 [node name="SpawnPoints" type="Node2D" parent="."]
 
 [node name="0" type="Marker2D" parent="SpawnPoints" groups=["PlayerSpawnPoint"]]
-position = Vector2(715, 275)
+position = Vector2(713, 272)
 
 [node name="1" type="Marker2D" parent="SpawnPoints" groups=["PlayerSpawnPoint"]]
-position = Vector2(726, 291)
+position = Vector2(730, 294)
 
 [connection signal="body_entered" from="container/StartLine" to="Path2D" method="_on_start_line_body_entered"]
 [connection signal="body_entered" from="container/track1" to="." method="_on_track_1_body_entered"]
