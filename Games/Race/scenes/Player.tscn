@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dujo8837sclxt"]
+[gd_scene load_steps=6 format=3 uid="uid://dujo8837sclxt"]
 
 [ext_resource type="Texture2D" uid="uid://bf0xn4nvneppy" path="res://Assets/Racing_AssetPack_Personal/Racing_AssetPack_Personal/Racing_AssetPack - Copy.png" id="1_iqfoa"]
 [ext_resource type="Script" uid="uid://dgo88lt8jgk85" path="res://Games/Race/scripts/Car/player.gd" id="1_umwcn"]
@@ -20,9 +20,6 @@ properties/2/replication_mode = 1
 properties/3/path = NodePath("CPUParticles2D2:emitting")
 properties/3/spawn = true
 properties/3/replication_mode = 1
-
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ldjuq"]
-polygon = PackedVector2Array(-7, -4, 7, -4, 7, 4, -7, 4)
 
 [node name="Car" type="CharacterBody2D" groups=["Players"]]
 scale = Vector2(2, 2)
@@ -59,10 +56,6 @@ metadata/_edit_lock_ = true
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_ldjuq")
-
-[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
-visible = false
-occluder = SubResource("OccluderPolygon2D_ldjuq")
 
 [node name="CPUParticles2D2" parent="." instance=ExtResource("3_ldjuq")]
 position = Vector2(-8.5, 0)

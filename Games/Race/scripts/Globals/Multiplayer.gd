@@ -53,11 +53,11 @@ func host():
 		multiplayer.set_multiplayer_peer(peer)
 		multiplayer.peer_connected.connect(_add_player_to_game)
 		multiplayer.peer_disconnected.connect(_kick_player)
-		SendPlayerInformations("HOST", multiplayer.get_unique_id())
+		SendPlayerInformations("Player_1", multiplayer.get_unique_id())
 
 func connected_to_server():
 	print("connected to server")
-	SendPlayerInformations.rpc_id(1, "Sigma", multiplayer.get_unique_id())
+	SendPlayerInformations.rpc_id(1, "Player_2", multiplayer.get_unique_id())
 func server_disconnected():
 	pass
 

@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3u36fuwsi6vh"]
+[gd_scene load_steps=3 format=3 uid="uid://c3u36fuwsi6vh"]
 
 [ext_resource type="Texture2D" uid="uid://cesw5fn4blicg" path="res://Assets/Racing_AssetPack_Personal/Racing_AssetPack_Personal/Racing_AssetPack - Copy2.png" id="1_hi3uu"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_hi3uu"]
+polygon = PackedVector2Array(-2.99997, 7.00001, -3.00003, -6.99999, 2.99997, -7.00001, 3.00003, 6.99999)
 
 [node name="my_player" type="Sprite2D"]
 z_index = 4
@@ -8,3 +11,6 @@ rotation = 1.5708
 texture = ExtResource("1_hi3uu")
 region_enabled = true
 region_rect = Rect2(423, 239, 6, 14)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_hi3uu")

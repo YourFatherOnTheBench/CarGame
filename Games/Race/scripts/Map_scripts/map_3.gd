@@ -1,7 +1,7 @@
 extends Control
 
 @onready var EndingRace: PackedScene = preload("res://Games/Race/scenes/UI/EndingRace.tscn")
-@onready var EndingMultiplayerScene: PackedScene = preload("res://EndingLeaderBoeardMultiPlayer.tscn")
+@onready var EndingMultiplayerScene: PackedScene = preload("res://Games/Race/scenes/UI/EndingLeaderBoeardMultiPlayer.tscn")
 const checkPointsOfMap: int = 7
 @onready var endingscene = EndingRace.instantiate()
 @onready var EndingMultiplayer = EndingMultiplayerScene.instantiate()
@@ -25,6 +25,9 @@ func _ready() -> void:
 					currentPlayer.global_position = spawn.global_position
 					currentPlayer.rotation_degrees = -90
 			index += 1
+			if Multiplayer.Players[i].id == multiplayer.get_unique_id():
+				$ArrowAnimation.global_position = currentPlayer.global_position
+				$ArrowAnimation.global_position.y -= 60
 	else:
 		var currentPlayer = PlayerScene.instantiate()
 		add_child(currentPlayer)

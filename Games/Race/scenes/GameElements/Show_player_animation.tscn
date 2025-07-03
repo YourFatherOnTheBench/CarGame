@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://bx7fxfagyb0v3"]
+
+[ext_resource type="Script" uid="uid://buvghev8ta3h6" path="res://Games/Race/scripts/show_player_animation.gd" id="1_e8aym"]
+[ext_resource type="Texture2D" uid="uid://ch8l2rqvhrbqr" path="res://Assets/arrow2.png" id="1_jy634"]
+
+[sub_resource type="Animation" id="Animation_ag2yg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.654902, 0.478431, 0, 0.435294)]
+}
+
+[sub_resource type="Animation" id="Animation_e8aym"]
+resource_name = "show_player"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.7, 1, 1.30224, 1.59744),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -26), Vector2(0, 0), Vector2(0, -26), Vector2(0, 0), Vector2(0, -26)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.26667, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.654902, 0.478431, 0, 0.435294), Color(0.654902, 0.478431, 0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ycy18"]
+_data = {
+&"RESET": SubResource("Animation_ag2yg"),
+&"show_player": SubResource("Animation_e8aym")
+}
+
+[node name="ArrowAnimation" type="Node2D"]
+script = ExtResource("1_e8aym")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ycy18")
+}
+autoplay = "show_player"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.654902, 0.478431, 0, 0.435294)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_jy634")
+region_enabled = true
+region_rect = Rect2(44, 60, 135, 229)

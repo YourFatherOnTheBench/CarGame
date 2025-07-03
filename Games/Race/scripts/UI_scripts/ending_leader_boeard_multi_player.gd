@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var container: VBoxContainer = $MarginContainer/Panel/VBoxContainer
 @onready var Player_data_scene: PackedScene = preload("res://Games/Race/scenes/UI/player_result_label.tscn")
+@onready var back_button_scene: PackedScene = preload("res://UI/BackButton.tscn")
 
 var player_ids = []
 var place: int = 1
@@ -9,7 +10,7 @@ var i: int = 0
 func _ready() -> void:
 	player_ids = get_ids()
 	Globals.race_ended.connect(RaceEnding)
-
+	
 
 
 func RaceEnding():
@@ -46,3 +47,9 @@ func get_ids():
 		)
 		
 	return sorted_ids
+	
+
+
+
+func _on_button_pressed() -> void:
+	Transition.play_animation("res://UI/HostingScene.tscn")

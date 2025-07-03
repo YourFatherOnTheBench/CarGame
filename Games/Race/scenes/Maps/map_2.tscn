@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=4 uid="uid://4uai0wdpqotr"]
+[gd_scene load_steps=60 format=4 uid="uid://4uai0wdpqotr"]
 
 [ext_resource type="Script" uid="uid://5dfdjpsn8t1i" path="res://Games/Race/scripts/Map_scripts/map_2.gd" id="1_y5olx"]
 [ext_resource type="PackedScene" uid="uid://dujo8837sclxt" path="res://Games/Race/scenes/Player.tscn" id="2_lj2ll"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://cyr3ijjsx13ss" path="res://Games/Race/scenes/UI/leaderboard.tscn" id="11_25beo"]
 [ext_resource type="AudioStream" uid="uid://cuxpq061s8y3c" path="res://Assets/Racing_AssetPack_Personal/2000's Retro Racing Game Music Pack/2000's Retro Racing Game Music Pack/LOOPS/9. Knight Rider (LOOP) [128 bpm].wav" id="12_risvm"]
 [ext_resource type="PackedScene" uid="uid://s54avf1mc70b" path="res://UI/goBackScene.tscn" id="13_kb3jq"]
+[ext_resource type="PackedScene" uid="uid://bx7fxfagyb0v3" path="res://Games/Race/scenes/GameElements/Show_player_animation.tscn" id="14_lj2ll"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8prgu"]
 texture = ExtResource("3_5riqs")
@@ -4899,6 +4900,9 @@ position = Vector2(-187, -60)
 
 [node name="4" type="Marker2D" parent="SpawnPoints" groups=["PlayerSpawnPoint"]]
 position = Vector2(-171, -72)
+
+[node name="ArrowAnimation" parent="." instance=ExtResource("14_lj2ll")]
+position = Vector2(369, 136)
 
 [connection signal="body_entered" from="Container/AreaOfTrack/track1" to="." method="_on_track_1_body_entered"]
 [connection signal="body_exited" from="Container/AreaOfTrack/track1" to="." method="_on_track_1_body_exited"]
