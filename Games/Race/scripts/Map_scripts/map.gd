@@ -6,38 +6,47 @@ const checkpointsofMap: int = 7
 @onready var endingscene = EndingRace.instantiate()
 @onready var EndingMultiplayer = EndingMultiplayerScene.instantiate()
 
-@export var PlayerScene: PackedScene
+@onready var Player1Scene: PackedScene = preload("res://Games/Race/scenes/Player.tscn")
+@onready var Player2Scene: PackedScene = preload("res://Games/Race/scenes/Players/PLAYER2.tscn")
+@onready var camera: Camera2D = $Camera2D
 
 
 
 func _ready() -> void:
+	Globals.restart()
 	Globals.LapsNeedToBeMade = checkpointsofMap
 	Globals.LapTimes = []
 	Globals.RaceTime = 0
 	Globals.can_end.connect(EndRace)
 	if !Globals.SinglePlayer:
-		var index = 0
-		for i in Multiplayer.Players:
-			var currentPlayer = PlayerScene.instantiate()
-			currentPlayer.name = str(Multiplayer.Players[i].id)
-			add_child(currentPlayer)
-			for spawn in $SpawnPoints.get_children():
-				if spawn.name == str(index):
-					currentPlayer.global_position = spawn.global_position
-			index += 1
+		var player1 = Player1Scene.instantiate()
+		var player2 = Player2Scene.instantiate()
+		player1.global_position = $"SpawnPoints/0".global_position
+		player1.name = "1"
+		player2.name = "2"
+		player2.global_position = $"SpawnPoints/1".global_position
+		add_child(player1)
+		add_child(player2)
+		for p in get_tree().get_nodes_in_group("Players"):
+			camera.add_player(p)
 	else:
-		var currentPlayer = PlayerScene.instantiate()
+		var currentPlayer = Player1Scene.instantiate()
 		add_child(currentPlayer)
 		currentPlayer.global_position = $"SpawnPoints/0".global_position
+		for p in get_tree().get_nodes_in_group("Players"):
+			camera.add_player(p)
 		
-			
+
 	
 func EndRace():
 	if Globals.SinglePlayer:
 		add_child(endingscene)
+		Globals.race_ended.emit()
 	else:
-		add_child(EndingMultiplayer)
-	Globals.race_ended.emit()
+		if Globals.Players["1"].LapsMade > 5 and Globals.Players["2"].LapsMade > 5:
+			add_child(EndingMultiplayer)
+			Globals.race_ended.emit()
+	
 
 
 func _on_track_1_body_exited(body: Node2D) -> void:

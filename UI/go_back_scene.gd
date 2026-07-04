@@ -5,7 +5,7 @@ func _on_button_pressed() -> void:
 	if Globals.SinglePlayer:
 		goBacktoGameChoice()
 	else:
-		rpc_id(multiplayer.get_unique_id(), "goBackToHostingScene")
+		goBacktoGameChoice()
 
 @rpc("call_local")
 func goBackToHostingScene():

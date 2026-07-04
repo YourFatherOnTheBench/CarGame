@@ -12,9 +12,11 @@ func add_checkpoint(body: Node, index: int) -> void:
 		if index == checkpoint_made:
 			checkpoint_made += 1
 	else:
-		var player_id = int(body.name)
-		if Multiplayer.Players[player_id]["CheckpointsMade"] == index:
-			Multiplayer.Players[player_id]["CheckpointsMade"] += 1
+		var player_id = body.name
+		print(player_id)
+		if Globals.Players[player_id]["CheckpointsMade"] == index:
+			Globals.Players[player_id]["CheckpointsMade"] += 1
+	print(Globals.Players)
 	
 func _on_finish_line_body_entered(body: Node2D) -> void:
 	if Globals.SinglePlayer:
@@ -23,8 +25,7 @@ func _on_finish_line_body_entered(body: Node2D) -> void:
 			Globals.lap_made.emit(body)
 			Globals.race_started = true
 	else:
-		var player_id = int(body.name)
-		if Multiplayer.Players[player_id]["CheckpointsMade"] >= Globals.LapsNeedToBeMade:
-			Globals.sync_data.emit(player_id, Multiplayer.Players[player_id]["time"])
-			Multiplayer.Players[player_id]["CheckpointsMade"] = 0
+		var player_id = body.name
+		if Globals.Players[player_id]["CheckpointsMade"] >= Globals.LapsNeedToBeMade:
 			Globals.lap_made.emit(body)
+			print("didlap")

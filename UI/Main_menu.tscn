@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://psyfs7ti8ssd"]
+[gd_scene load_steps=13 format=3 uid="uid://psyfs7ti8ssd"]
 
 [ext_resource type="Texture2D" uid="uid://de188pevfg4ss" path="res://Assets/rural area/ruralparallaxsky.png" id="1_amia7"]
 [ext_resource type="Script" uid="uid://c344e8ok5xhtx" path="res://UI/main_menu.gd" id="1_posw2"]
@@ -12,12 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://cd4wbis5qrt6m" path="res://Assets/rural area/ruralparallaxriverskyredlex.png" id="9_y1bai"]
 [ext_resource type="Texture2D" uid="uid://0lx4q108njse" path="res://Assets/rural area/ruralparallaxvillage.png" id="10_iqwx1"]
 [ext_resource type="FontFile" uid="uid://7pd1bf7pp0t6" path="res://Assets/m6x11.ttf" id="10_ysjxp"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysjxp"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_posw2"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -152,37 +146,19 @@ theme_override_font_sizes/font_size = 150
 text = "King of the Race
 "
 
-[node name="SinglePlayer" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="PLAY" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("10_ysjxp")
 theme_override_font_sizes/font_size = 60
 text = "SINGLEPLAYER"
 flat = true
 
-[node name="HOST" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="TWO PLAYERS" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("10_ysjxp")
 theme_override_font_sizes/font_size = 60
-text = "HOST"
+text = "TWOPLAYERS"
 flat = true
 
-[node name="JOIN" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("10_ysjxp")
-theme_override_font_sizes/font_size = 60
-theme_override_styles/focus = SubResource("StyleBoxFlat_ysjxp")
-text = "JOIN"
-flat = true
-
-[node name="QUIT" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("10_ysjxp")
-theme_override_font_sizes/font_size = 60
-theme_override_styles/focus = SubResource("StyleBoxFlat_posw2")
-text = "QUIT"
-flat = true
-
-[connection signal="pressed" from="MarginContainer/VBoxContainer/SinglePlayer" to="." method="_on_single_player_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HOST" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/JOIN" to="." method="_on_join_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/QUIT" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PLAY" to="." method="_on_single_player_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/TWO PLAYERS" to="." method="_on_host_pressed"]

@@ -46,17 +46,6 @@ metadata/_edit_lock_ = true
 wait_time = 0.75
 one_shot = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.12, 1.12)
-limit_left = -250
-limit_top = -380
-limit_right = 1500
-limit_bottom = 1000
-limit_smoothed = true
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
-metadata/_edit_lock_ = true
-
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_ldjuq")
 
@@ -67,5 +56,12 @@ occluder = SubResource("OccluderPolygon2D_ldjuq")
 [node name="CPUParticles2D2" parent="." instance=ExtResource("3_ldjuq")]
 position = Vector2(-8.5, 0)
 emitting = false
+
+[node name="carColor" type="Sprite2D" parent="."]
+z_index = 5
+rotation = 1.5708
+texture = ExtResource("1_iqfoa")
+region_enabled = true
+region_rect = Rect2(439, 323, 6, 14)
 
 [connection signal="timeout" from="boostimer" to="." method="_on_boostimer_timeout"]

@@ -18,6 +18,7 @@ func _ready() -> void:
 	
 	
 func RaceEnding():
+	print(Globals.Players)
 	animation.play("EndRace")
 	
 	for x in Globals.LapTimes:

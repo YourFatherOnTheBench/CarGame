@@ -1,7 +1,6 @@
 [gd_scene load_steps=52 format=4 uid="uid://6ykrc120xq3e"]
 
 [ext_resource type="Script" uid="uid://cdgjpo0y7lsq0" path="res://Games/Race/scripts/Map_scripts/map.gd" id="1_mv8en"]
-[ext_resource type="PackedScene" uid="uid://dujo8837sclxt" path="res://Games/Race/scenes/Player.tscn" id="2_jvadv"]
 [ext_resource type="PackedScene" uid="uid://cyr3ijjsx13ss" path="res://Games/Race/scenes/UI/leaderboard.tscn" id="4_bhf3e"]
 [ext_resource type="PackedScene" uid="uid://b2fhxqnt7nck2" path="res://Games/Race/scenes/GameElements/tree.tscn" id="5_tnves"]
 [ext_resource type="Texture2D" uid="uid://b8ob4jmqcu2tl" path="res://Assets/Racing_AssetPack_Personal/AnimatedTreeFree/AnimatedTreeFree/Leafes.png" id="6_70k4q"]
@@ -11,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bwgui1uh0q6b" path="res://Games/Race/scenes/UI/StartRaceAnimation.tscn" id="10_bm44e"]
 [ext_resource type="Script" uid="uid://bbjmih1l5tshx" path="res://Games/Race/scripts/Track_script/checkpoints.gd" id="11_851i0"]
 [ext_resource type="AudioStream" uid="uid://0ig1p4noeoth" path="res://Assets/Racing_AssetPack_Personal/2000's Retro Racing Game Music Pack/2000's Retro Racing Game Music Pack/LOOPS/6. Midsummer (LOOP) [128 bpm].wav" id="12_e62uv"]
+[ext_resource type="PackedScene" uid="uid://ci6lc75b0xtpb" path="res://UI/camera_2d.tscn" id="12_nnmig"]
 [ext_resource type="PackedScene" uid="uid://s54avf1mc70b" path="res://UI/goBackScene.tscn" id="13_3kfi3"]
 
 [sub_resource type="Shader" id="Shader_8afqh"]
@@ -8925,7 +8925,6 @@ offset_right = 2.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mv8en")
-PlayerScene = ExtResource("2_jvadv")
 
 [node name="Leaderboard" parent="." instance=ExtResource("4_bhf3e")]
 
@@ -9100,6 +9099,8 @@ position = Vector2(713, 272)
 
 [node name="1" type="Marker2D" parent="SpawnPoints" groups=["PlayerSpawnPoint"]]
 position = Vector2(730, 294)
+
+[node name="Camera2D" parent="." instance=ExtResource("12_nnmig")]
 
 [connection signal="body_entered" from="container/StartLine" to="Path2D" method="_on_start_line_body_entered"]
 [connection signal="body_entered" from="container/track1" to="." method="_on_track_1_body_entered"]

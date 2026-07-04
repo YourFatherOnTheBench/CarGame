@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2saah28ttixp"]
+
+[ext_resource type="FontFile" uid="uid://7pd1bf7pp0t6" path="res://Assets/m6x11.ttf" id="1_4lgja"]
+
+[sub_resource type="Animation" id="Animation_lf46d"]
+resource_name = "start"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/P:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.02, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/P")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.96667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ipfh4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/P:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wb6ei"]
+_data = {
+&"RESET": SubResource("Animation_ipfh4"),
+&"start": SubResource("Animation_lf46d")
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer"]
+libraries = {
+&"": SubResource("AnimationLibrary_wb6ei")
+}
+autoplay = "start"
+
+[node name="P" type="Label" parent="."]
+offset_right = 21.0
+offset_bottom = 22.0
+theme_override_fonts/font = ExtResource("1_4lgja")
+theme_override_font_sizes/font_size = 24
+text = "P2"

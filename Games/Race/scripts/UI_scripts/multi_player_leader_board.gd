@@ -18,17 +18,14 @@ var showtimer: bool = true
 
 
 func _ready() -> void:
-	print(self.name)
-	if multiplayer.get_unique_id() == int(self.name):
-		Globals.lap_made.connect(Did_Lap)
-		print("connected ")
+	Globals.lap_made.connect(Did_Lap)
 
 
 func _process(delta: float) -> void:
 	if Globals.race_started and !Globals.Stop_moving:
-		if self.name == str(Multiplayer.Players[int(self.name)].id):
-			Multiplayer.Players[int(self.name)]["time"] += delta
-			Multiplayer.check_laps(int(self.name))
+		Globals.Players[self.name]["time"] += delta
+		if Globals.Players[self.name].LapsMade > 5:
+			Globals.can_end.emit()
 			
 	Update_UI()
 
@@ -37,20 +34,24 @@ func Did_Lap(body):
 
 
 func UpdatePlayers(body):
-	if multiplayer.get_unique_id() == int(body.name):
-		showtimer = false
+	if str(body.name) != self.name:
+		return
+	if Globals.Players[self.name].CheckpointsMade >= Globals.LapsNeedToBeMade:
+		Globals.Players[self.name].CheckpointsMade = 0
+		showtimer = false 
 
 		timer.start()
-		#Multiplayer.Players[int(body.name)]["LapsMade"] += 1
-		#Multiplayer.Players[int(body.name)]["Laps"].append(snapped(Multiplayer.Players[int(body.name)].time, 0.01))
-	#	Multiplayer.Players[int(body.name)]["time"] = 0
+		Globals.Players[self.name].LapsMade += 1
+		Globals.Players[self.name]["Laps"].append(snapped(Globals.Players[self.name].time, 0.01))
+		Globals.Players[self.name].time = 0
+		print(Globals.Players)
 		Update_UI()
 func Update_UI():
 
-	if showtimer:
-		time_label.text = " %.2f" % Multiplayer.Players[int(self.name)].time + "s"
-	name_label.text = Multiplayer.Players[int(self.name)].name
-	laps_label.text = str(Multiplayer.Players[int(self.name)].LapsMade) + "/5"
+	if showtimer and Globals.Players[self.name].LapsMade < 6:
+		time_label.text = " %.2f" % Globals.Players[self.name].time + "s"
+	name_label.text = Globals.Players[self.name].name
+	laps_label.text = str(Globals.Players[self.name].LapsMade) + "/5"
 
 
 func _on_timer_timeout() -> void:

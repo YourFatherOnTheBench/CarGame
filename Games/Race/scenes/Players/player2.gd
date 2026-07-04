@@ -33,10 +33,10 @@ var min_steering_angle = 5
 func _ready() -> void:
 	
 	cameraShakeNoise = FastNoiseLite.new()
-	
+
 func _physics_process(delta: float) -> void:
 	acceleration = Vector2.ZERO
-	if !Globals.Stop_moving and Globals.Players["1"].LapsMade < 6:
+	if !Globals.Stop_moving and Globals.Players["2"].LapsMade < 6:
 		$CPUParticles2D2.emitting = true
 		get_input()
 	
@@ -56,19 +56,19 @@ func apply_friction():
 	
 func get_input():
 	var turn = 0
-	if Input.is_action_pressed("right2"):
+	if Input.is_action_pressed("right"):
 		turn += 30
-	if Input.is_action_pressed("left2"):
+	if Input.is_action_pressed("left"):
 		turn -= 30
 	steer_direction = turn * deg_to_rad(steering_angle)
-	if Input.is_action_pressed("drive2"):
+	if Input.is_action_pressed("drive"):
 		acceleration = transform.x * Engine_power
 		if wheel_base < max_wheel:
 			wheel_base += 0.08 
 	else:
 		if wheel_base > min_wheel:
 			wheel_base -= 1
-	if Input.is_action_pressed("drive_back2"):
+	if Input.is_action_pressed("drive_back"):
 		acceleration = transform.x * braking
 	
 func calculate_steering(delta):
@@ -95,7 +95,7 @@ func calculate_steering(delta):
 
 func boost():
 	#var camera_tween = get_tree().create_tween()
-	#camera_tween.tween_method(CameraShaking, 3.0, 1.0, 1)
+	#camera_tween.tween_method(camera, 3.0, 1.0, 1)
 	acceleration = acceleration.lerp(transform.x * 3, 0.8)
 	drag = -0.0002
 	friction = -0.3
@@ -111,6 +111,4 @@ func slow_down() -> void:
 	
 func on_track() -> void:
 	drag = -0.001
-	
-
 	

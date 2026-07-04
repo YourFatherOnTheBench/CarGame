@@ -7,7 +7,7 @@ var Players = {}
 func _ready():
 	multiplayer.connected_to_server.connect(connected_to_server)
 	multiplayer.server_disconnected.connect(server_disconnected)
-	Globals.sync_data.connect(sync)
+#	Globals.sync_data.connect(sync)
 
 
 func sync(pid, lap_time):
@@ -53,11 +53,12 @@ func host():
 		multiplayer.set_multiplayer_peer(peer)
 		multiplayer.peer_connected.connect(_add_player_to_game)
 		multiplayer.peer_disconnected.connect(_kick_player)
-		SendPlayerInformations("HOST", multiplayer.get_unique_id())
+		SendPlayerInformations("P1", multiplayer.get_unique_id())
+		SendPlayerInformations("P2", multiplayer.get_unique_id())
 
 func connected_to_server():
 	print("connected to server")
-	SendPlayerInformations.rpc_id(1, "Sigma", multiplayer.get_unique_id())
+	
 func server_disconnected():
 	pass
 

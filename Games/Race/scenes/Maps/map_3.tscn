@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://bwf6qn2kh424n"]
+[gd_scene load_steps=41 format=4 uid="uid://bwf6qn2kh424n"]
 
 [ext_resource type="Script" uid="uid://dogffjunur8v7" path="res://Games/Race/scripts/Map_scripts/map_3.gd" id="1_bpqwh"]
 [ext_resource type="PackedScene" uid="uid://dujo8837sclxt" path="res://Games/Race/scenes/Player.tscn" id="2_guu70"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dmj1gqmdbq0bo" path="res://Assets/particle.png" id="11_kqktq"]
 [ext_resource type="AudioStream" uid="uid://be2clahwwmpyk" path="res://Assets/Racing_AssetPack_Personal/2000's Retro Racing Game Music Pack/2000's Retro Racing Game Music Pack/LOOPS/7. Snow Factory (LOOP) [128 bpm].wav" id="12_ros47"]
 [ext_resource type="PackedScene" uid="uid://s54avf1mc70b" path="res://UI/goBackScene.tscn" id="13_5vuw1"]
+[ext_resource type="PackedScene" uid="uid://ci6lc75b0xtpb" path="res://UI/camera_2d.tscn" id="13_bpqwh"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pcwkw"]
 texture = ExtResource("3_xqspe")
@@ -4790,6 +4791,8 @@ position = Vector2(179, 373)
 
 [node name="3" type="Marker2D" parent="SpawnPoints" groups=["PlayerSpawnPoint"]]
 position = Vector2(194, 359)
+
+[node name="Camera2D" parent="." instance=ExtResource("13_bpqwh")]
 
 [connection signal="body_entered" from="container/AreaOfTrack/whole" to="." method="_on_whole_body_entered"]
 [connection signal="body_exited" from="container/AreaOfTrack/whole" to="." method="_on_whole_body_exited"]
